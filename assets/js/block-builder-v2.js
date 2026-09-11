@@ -2,7 +2,19 @@
 (() => {
  const qp=new URLSearchParams(location.search), campaignId=qp.get('campaign')||qp.get('rollout')||qp.get('id');
  const cfg=window.RAPID_CAMPAIGN_SUPABASE||window.SUPABASE_CONFIG||{};
- const sb=window.supabase.createClient(cfg.url||window.SUPABASE_URL,cfg.anonKey||cfg.anon_key||window.SUPABASE_ANON_KEY);
+ const SUPABASE_URL=cfg.url||window.SUPABASE_URL||'https://lrgljkpgmsjeufyqqqfi.supabase.co';
+ const SUPABASE_KEY=cfg.anonKey||cfg.anon_key||cfg.publishableKey||cfg.publishable_key||window.SUPABASE_ANON_KEY||'sb_publishable_ztatvzK3clfYfr9LZDz4Pg_RZuXmuQx';
+ let sb=null;
+ try{
+   if(!window.supabase?.createClient) throw new Error('Supabase library did not load');
+   sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+ }catch(err){
+   console.error('Rapid Campaign builder startup error:',err);
+   setTimeout(()=>{
+     const n=document.querySelector('#notice');
+     if(n){n.textContent='Builder loaded, but the backend connection failed: '+(err?.message||err);n.className='vb-notice error';n.hidden=false;}
+   },0);
+ }
  const $=s=>document.querySelector(s), canvas=$('#canvas'), editor=$('#editor'), blockModal=$('#blockModal'), assetModal=$('#assetModal');
  let campaign=null, areas=[], blocks=[], selected=null, editorTab='content', areaId='', insertAt=null, dragFrom=null, assetTarget=null;
  const defs={
@@ -124,13 +136,14 @@
  function openLibrary(pos=null){insertAt=pos;blockModal.hidden=false}
  function add(type){const d=defs[type],b={id:crypto.randomUUID(),type,content:structuredClone(d.content),settings:structuredClone(d.settings||{}),visible:true,override:null};blocks.splice(insertAt===null?blocks.length:insertAt,0,b);blockModal.hidden=true;selected=b.id;render();renderEditor()}
  function applyTemplate(name){blocks=(templates[name]||[]).map(t=>({id:crypto.randomUUID(),type:t,content:structuredClone(defs[t].content),settings:structuredClone(defs[t].settings||{}),visible:true,override:null}));selected=null;render();renderEditor()}
- async function openAssets(key){assetTarget={block:blocks.find(x=>x.id===selected),key};assetModal.hidden=false;await loadAssets()}
+ async function openAssets(key){if(!sb){notice('Backend connection is not available.',true);return}assetTarget={block:blocks.find(x=>x.id===selected),key};assetModal.hidden=false;await loadAssets()}
  async function loadAssets(){const {data,error}=await sb.storage.from('campaign-assets').list(campaignId||'',{limit:100,sortBy:{column:'created_at',order:'desc'}});if(error){$('#assetGrid').innerHTML=`<p>${esc(error.message)}</p>`;return}$('#assetGrid').innerHTML=(data||[]).filter(x=>!x.id||x.metadata).map(x=>{const {data:u}=sb.storage.from('campaign-assets').getPublicUrl(`${campaignId}/${x.name}`);return `<div class="vb-asset" data-url="${esc(u.publicUrl)}"><img src="${esc(u.publicUrl)}"><small>${esc(x.name)}</small></div>`}).join('')||'<p class="vb-help">No campaign images yet.</p>';document.querySelectorAll('.vb-asset').forEach(x=>x.onclick=()=>pickAsset(x.dataset.url))}
  function pickAsset(url){const b=assetTarget.block;if(areaId){b.override=b.override||{content:{},settings:{}};b.override.content[assetTarget.key]=url}else b.content[assetTarget.key]=url;assetModal.hidden=true;render();renderEditor()}
  async function uploadAsset(file){const ext=file.name.split('.').pop()||'jpg',path=`${campaignId}/${Date.now()}-${crypto.randomUUID().slice(0,8)}.${ext}`,{error}=await sb.storage.from('campaign-assets').upload(path,file,{upsert:false});if(error)throw error;const {data}=sb.storage.from('campaign-assets').getPublicUrl(path);pickAsset(data.publicUrl)}
- async function ai(action,extra,done){try{notice('AI is working…');const {data:{session}}=await sb.auth.getSession();const r=await fetch(`${cfg.url}/functions/v1/campaign-ai-blocks`,{method:'POST',headers:{Authorization:`Bearer ${session.access_token}`,'Content-Type':'application/json'},body:JSON.stringify({campaign_id:campaignId,action,blocks:blocks.map(effective),...extra})}),d=await r.json();if(!r.ok)throw new Error(d.error||'AI request failed');done(d.output||{});notice('AI suggestion ready.')}catch(e){notice(e.message||String(e),true)}}
- async function save(){try{const serial=blocks.map(({override,...b})=>b);const {error}=await sb.rpc('org_admin_save_campaign_page',{p_campaign:campaignId,p_page_settings:{},p_blocks:serial});if(error)throw error;if(areaId){for(const b of blocks){if(!b.override)continue;const {error:oe}=await sb.rpc('org_admin_save_block_override',{p_block:b.id,p_area:areaId,p_content:b.override.content||{},p_settings:b.override.settings||{},p_visible:b.override.visible??null});if(oe)throw oe}}notice('Page saved.')}catch(e){notice(e.message||String(e),true)}}
+ async function ai(action,extra,done){try{if(!sb)throw new Error('Backend connection is not available.');notice('AI is working…');const {data:{session}}=await sb.auth.getSession();const r=await fetch(`${cfg.url}/functions/v1/campaign-ai-blocks`,{method:'POST',headers:{Authorization:`Bearer ${session.access_token}`,'Content-Type':'application/json'},body:JSON.stringify({campaign_id:campaignId,action,blocks:blocks.map(effective),...extra})}),d=await r.json();if(!r.ok)throw new Error(d.error||'AI request failed');done(d.output||{});notice('AI suggestion ready.')}catch(e){notice(e.message||String(e),true)}}
+ async function save(){try{if(!sb)throw new Error('Backend connection is not available.');const serial=blocks.map(({override,...b})=>b);const {error}=await sb.rpc('org_admin_save_campaign_page',{p_campaign:campaignId,p_page_settings:{},p_blocks:serial});if(error)throw error;if(areaId){for(const b of blocks){if(!b.override)continue;const {error:oe}=await sb.rpc('org_admin_save_block_override',{p_block:b.id,p_area:areaId,p_content:b.override.content||{},p_settings:b.override.settings||{},p_visible:b.override.visible??null});if(oe)throw oe}}notice('Page saved.')}catch(e){notice(e.message||String(e),true)}}
  async function load(){
+  if(!sb){notice('Builder is available, but the backend connection is not available.',true);render();renderEditor();return}
   if(!campaignId){notice('Missing campaign ID.',true);return}
   const [{data:c},{data:a}]=await Promise.all([sb.from('campaigns').select('name').eq('id',campaignId).single(),sb.rpc('org_admin_campaign_areas_for_builder',{p_campaign:campaignId})]);campaign=c;areas=a||[];$('#campaignName').textContent=c?.name||'Campaign';
   $('#areaMode').innerHTML='<option value="">Master page</option>'+areas.map(x=>`<option value="${x.id}">${esc(x.area_name)}</option>`).join('');
