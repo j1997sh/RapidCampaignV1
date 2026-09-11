@@ -26,3 +26,20 @@ body.rc-shell-v10 .vb3-main{margin-left:232px!important;padding-top:58px!importa
 .vb3-form-row{border:1px solid var(--rc-line);padding:7px;display:grid;grid-template-columns:20px 1fr auto auto;gap:6px;align-items:center;margin-bottom:6px}.vb3-form-row input[type=text]{padding:7px;border:1px solid #d1dbe4}.vb3-addfields{display:grid;grid-template-columns:1fr 1fr;gap:5px}.vb3-addfields button{border:1px solid #d0dbe5;background:#fff;padding:7px;text-align:left;font:inherit;font-size:10px;cursor:pointer}
 .vb3-notice{border:1px solid #b6d7ef;background:#eff8fe;color:#0c68ad;padding:10px 12px;font-size:12px;margin-bottom:14px}.vb3-notice.error{background:#fff1ef;border-color:#efb7af;color:#9d463b}
 @media(max-width:1100px){.vb3-layout{grid-template-columns:1fr}.vb3-editor{position:static}.vb3-library,.vb3-asset-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:800px){body.rc-shell-v10 .vb3-main{margin-left:0!important}.vb3-work{padding:20px 16px 40px}.vb3-pagehead,.vb3-contextbar{flex-direction:column}.vb3-library,.vb3-asset-grid{grid-template-columns:1fr}.site-split,.site-hero.split,.site-grid3{grid-template-columns:1fr}}
+
+.vb3-field-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.vb3-field-head label{margin:0!important}
+.vb3-var-buttons{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.vb3-var-btn{border:1px solid #b9d4e9;background:#f4f9fd;color:#0d6daf;border-radius:12px;padding:3px 7px;font:inherit;font-size:9px;font-weight:800;cursor:pointer}
+.vb3-var-btn:hover{background:#e8f4fc;border-color:#1683df}
+.vb3-localisation-help{border:1px solid #c9deed;background:#f7fbfe;padding:10px 11px;margin-bottom:14px;font-size:11px;color:#547087;line-height:1.45}
+.site-media.contain{background-size:contain!important;background-repeat:no-repeat!important}
+.site-media.pos-left{background-position:left center!important}
+.site-media.pos-right{background-position:right center!important}
+.site-hero.image-bg{position:relative;background-size:cover!important;background-position:center!important;overflow:hidden}
+.site-hero.image-bg:before{content:"";position:absolute;inset:0;background:rgba(7,29,53,.52)}
+.site-hero.image-bg>div{position:relative;z-index:1;max-width:720px}
+.site-hero.split-left{display:grid;grid-template-columns:.95fr 1.05fr;gap:36px;align-items:center}
+.site-hero.split-left .site-media{order:-1}
+.vb3-font-preview{border:1px solid #dfe5ec;background:#fafcfe;padding:10px 12px;margin-top:6px}
+.vb3-font-preview strong{display:block;font-size:18px;margin-bottom:3px}
