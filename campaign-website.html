@@ -1,93 +1,111 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Website builder | Rapid Campaign</title>
-<link rel="stylesheet" href="assets/css/app.css">
-<link rel="stylesheet" href="assets/css/rapid-shell.css">
-<link rel="stylesheet" href="assets/css/block-builder-v2.css">
+<link rel="stylesheet" href="assets/css/rapid-shell-v10.css">
+<link rel="stylesheet" href="assets/css/block-builder-v3.css">
 </head>
 <body>
-<div id="rc-shell">
-<aside class="rc-sidebar">
-  <div class="rc-brand"><span class="rc-mark">RC</span><div><strong>Rapid Campaign</strong><small>Campaign workspace</small></div></div>
-  <nav>
-    <a href="index.html">Dashboard</a><a href="campaigns.html">Campaigns</a>
-    <a href="campaign-overview.html" data-campaign-link>Overview</a>
-    <a class="active" href="campaign-build.html" data-campaign-link>Build</a>
-    <a href="campaign-creative.html" data-campaign-link>Creative</a>
-    <a href="campaign-advertise.html" data-campaign-link>Advertise</a>
-    <a href="campaign-people.html" data-campaign-link>People</a>
-    <a href="campaign-setup.html" data-campaign-link>Setup</a>
-  </nav>
-</aside>
-
-<main class="vb-main">
-<header class="vb-topbar">
-  <div>
-    <div class="vb-breadcrumb">Campaigns / <span id="campaignName">Campaign</span> / Website</div>
-    <h1>Website builder</h1>
-  </div>
-  <div class="vb-actions">
-    <div class="vb-device"><button data-device="desktop" class="active">Desktop</button><button data-device="mobile">Mobile</button></div>
-    <button class="vb-btn" id="previewBtn">Preview</button>
-    <button class="vb-btn primary" id="saveBtn">Save</button>
-  </div>
-</header>
-
-<div id="notice" class="vb-notice" hidden></div>
-
-<section class="vb-controlbar">
-  <div class="vb-master">
-    <strong>Editing</strong>
-    <select id="areaMode"><option value="">Master page</option></select>
-    <span id="modeHelp">Changes apply to every local version.</span>
-  </div>
-  <div class="vb-control-actions">
-    <button class="vb-btn ai" id="aiBuild">✦ Build with AI</button>
-    <button class="vb-btn ai" id="aiSuggest">✦ Suggest next block</button>
-    <button class="vb-btn primary" id="addBlockTop">+ Add block</button>
-  </div>
-</section>
-
-<section class="vb-workspace">
-  <div class="vb-canvas-wrap">
-    <div id="templateStart" class="vb-template-start">
+<main class="vb3-main">
+  <div class="vb3-work">
+    <div class="vb3-pagehead">
       <div>
-        <h2>Start your page</h2>
-        <p>Start blank or use a simple structure. Every template is just editable blocks.</p>
+        <div class="vb3-breadcrumb">Campaigns / <span data-campaign-name id="campaignName">Campaign</span> / Build</div>
+        <h1>Website builder</h1>
+        <p>Build the master page once, then tailor individual local versions where you need to.</p>
       </div>
-      <div class="vb-templates">
-        <button data-template="blank">Blank</button><button data-template="petition">Petition</button><button data-template="campaign">Campaign</button>
-        <button data-template="lead">Lead generation</button><button data-template="report">Report launch</button><button data-template="event">Event</button>
+      <div class="vb3-page-actions">
+        <div class="vb3-device">
+          <button data-device="desktop" class="active">Desktop</button>
+          <button data-device="mobile">Mobile</button>
+        </div>
+        <button class="vb3-btn" id="previewBtn">Preview</button>
+        <button class="vb3-btn primary" id="saveBtn">Save changes</button>
       </div>
     </div>
-    <div id="canvas" class="vb-canvas"></div>
+
+    <div id="notice" class="vb3-notice" hidden></div>
+
+    <section class="vb3-contextbar">
+      <div class="vb3-edit-mode">
+        <span class="vb3-label">Editing</span>
+        <button class="vb3-mode active" id="masterMode">Master page</button>
+        <div class="vb3-local-select">
+          <button class="vb3-mode" id="localMode">Local version <span>⌄</span></button>
+          <div class="vb3-local-menu" id="localMenu" hidden>
+            <div class="vb3-local-search"><input id="localSearch" placeholder="Search areas…"></div>
+            <div id="localList" class="vb3-local-list"></div>
+          </div>
+        </div>
+        <span class="vb3-mode-note" id="modeHelp">Changes here flow to every local version.</span>
+      </div>
+      <div class="vb3-context-actions">
+        <button class="vb3-btn" id="pageStylesBtn">Page styles</button>
+        <button class="vb3-btn ai" id="aiBuild">✦ Build with AI</button>
+        <button class="vb3-btn ai" id="aiSuggest">✦ Suggest block</button>
+        <button class="vb3-btn primary" id="addBlockTop">+ Add block</button>
+      </div>
+    </section>
+
+    <section class="vb3-layout">
+      <div class="vb3-canvas-column">
+        <div id="templateStart" class="vb3-template-start">
+          <div>
+            <strong>Start with a structure</strong>
+            <span>Every template is just editable blocks.</span>
+          </div>
+          <div class="vb3-template-buttons">
+            <button data-template="blank">Blank</button>
+            <button data-template="petition">Petition</button>
+            <button data-template="campaign">Campaign</button>
+            <button data-template="lead">Lead generation</button>
+            <button data-template="report">Report launch</button>
+            <button data-template="event">Event</button>
+          </div>
+        </div>
+        <div id="canvas" class="vb3-canvas"></div>
+      </div>
+
+      <aside id="editor" class="vb3-editor">
+        <div class="vb3-editor-empty">
+          <div class="vb3-editor-empty-icon">▦</div>
+          <strong>Select a block</strong>
+          <p>Click any block to edit its content, design or local version.</p>
+        </div>
+      </aside>
+    </section>
   </div>
-
-  <aside id="editor" class="vb-editor">
-    <div class="vb-editor-empty"><strong>Select a block</strong><p>Click a block on the canvas to edit its content, design or local version.</p></div>
-  </aside>
-</section>
 </main>
+
+<div class="vb3-modal" id="blockModal" hidden>
+  <div class="vb3-modal-card">
+    <div class="vb3-modal-head">
+      <div><h2>Add a block</h2><p>Choose the building block you want to add.</p></div>
+      <button id="closeBlockModal">×</button>
+    </div>
+    <div class="vb3-library" id="blockLibrary"></div>
+  </div>
 </div>
 
-<div class="vb-modal" id="blockModal" hidden>
- <div class="vb-modal-card">
-  <div class="vb-modal-head"><div><h2>Add a block</h2><p>Choose only what this campaign needs.</p></div><button id="closeBlockModal">×</button></div>
-  <div class="vb-library" id="blockLibrary"></div>
- </div>
-</div>
-
-<div class="vb-modal" id="assetModal" hidden>
- <div class="vb-modal-card asset-card">
-  <div class="vb-modal-head"><div><h2>Campaign media</h2><p>Upload a new image or choose one already in the campaign library.</p></div><button id="closeAssetModal">×</button></div>
-  <div class="vb-asset-toolbar"><label class="vb-btn primary">Upload image<input id="assetUpload" type="file" accept="image/*" hidden></label></div>
-  <div id="assetGrid" class="vb-asset-grid"></div>
- </div>
+<div class="vb3-modal" id="assetModal" hidden>
+  <div class="vb3-modal-card vb3-assets-card">
+    <div class="vb3-modal-head">
+      <div><h2>Campaign media</h2><p>Upload once, then reuse images across this campaign.</p></div>
+      <button id="closeAssetModal">×</button>
+    </div>
+    <div class="vb3-asset-toolbar">
+      <label class="vb3-btn primary">Upload image<input id="assetUpload" type="file" accept="image/*" hidden></label>
+      <span id="uploadStatus"></span>
+    </div>
+    <div id="assetGrid" class="vb3-asset-grid"></div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/supabase-config.js"></script>
-<script src="assets/js/block-builder-v2.js"></script>
-</body></html>
+<script src="assets/js/rapid-shell-v10.js"></script>
+<script src="assets/js/block-builder-v3.js"></script>
+</body>
+</html>
