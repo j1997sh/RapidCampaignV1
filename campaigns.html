@@ -1,47 +1,44 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Rapid Campaign</title>
-<link href="assets/css/style.css?v=20260901-shell1" rel="stylesheet"/><link href="assets/css/rapid-app-v2.css?v=20260901-1907" rel="stylesheet"/><link href="assets/css/campaign-platform-v16.css?v=20260903-stable16" rel="stylesheet"/><link href="assets/css/campaign-ops-global-v181.css?v=20260903-ops181" rel="stylesheet"/><link href="assets/css/campaign-ops-refine-v19.css?v=20260903-refine19" rel="stylesheet"/><link href="assets/css/campaign-ops-final-v20.css?v=20260903-final20" rel="stylesheet"/><link href="assets/css/campaign-home-v22.css?v=20260903-v22" rel="stylesheet"/><link href="assets/css/rapid-product-v5.css?v=20260911-v5" rel="stylesheet"/><link href="assets/css/rapid-home-v6.css?v=20260911-v6" rel="stylesheet"/></head>
+<html><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Dashboard · Rapid Campaign</title>
+<link href="assets/css/style.css?v=20260901-shell1" rel="stylesheet"/><link href="assets/css/rapid-product-v5.css?v=20260911-v5" rel="stylesheet"/><link href="assets/css/rapid-dashboard-v8.css?v=20260911-v8" rel="stylesheet"/></head>
 <body class="admin-body">
-<div class="rc-product-shell">
-<aside class="rc-product-sidebar">
+<div class="rc-product-shell rc-nb-shell">
+<aside class="rc-product-sidebar rc-nb-sidebar">
   <a class="rc-product-brand" href="campaigns.html"><span class="rc-product-mark">RC</span><span><strong>Rapid Campaign</strong><small>Campaign workspace</small></span></a>
-  <nav class="rc-product-nav"><a class="active" href="campaigns.html">Home</a><a href="#campaigns">Campaigns</a><a href="#create">Create campaign</a></nav>
+  <nav class="rc-product-nav rc-nb-nav">
+    <a class="active" href="campaigns.html">Dashboard</a>
+    <a href="#campaigns">Campaigns</a>
+    <a href="campaign-supporters.html">Responses</a>
+    <a href="creatives.html">Creative</a>
+    <a href="campaign-advertise.html">Advertising</a>
+    <a href="attribution.html">Results</a>
+    <div class="rc-product-nav-label">Workspace</div>
+    <a href="campaign-integrations.html">Integrations</a>
+    <a href="campaign-settings.html">Settings</a>
+  </nav>
   <div class="rc-product-sidebar-bottom"><a data-action="logout" href="index.html">Log out</a></div>
 </aside>
-<main class="rc-product-main">
-  <header class="rc-product-topbar"><span class="crumb">Workspace</span><div class="top-actions"><a href="#campaigns">Campaigns</a><a href="#create">New campaign</a></div></header>
-  <div class="rc-product-content wide">
+<main class="rc-product-main rc-nb-main">
+  <header class="rc-product-topbar rc-nb-topbar"><strong>Dashboard</strong><div class="top-actions"><a href="campaign-wizard.html" class="rc-top-create">+ New campaign</a></div></header>
+  <div class="rc-nb-tabs"><a class="active" href="#activity">Activity</a><a href="#campaigns">Campaigns</a><a href="#performance">Performance</a></div>
+  <div class="rc-nb-content">
     <div id="centralCampaignsMessage"></div>
-    <section class="rc-home-head">
-      <div><div class="rc-eyebrow">Campaign workspace</div><h1>Campaigns</h1><p>Build once, localise everywhere and keep every page, response and ad connected.</p></div>
-      <a class="rc-home-primary" href="campaign-wizard.html"><b>+</b> Create campaign</a>
+    <section class="rc-nb-summary" id="performance">
+      <div><strong id="homeCampaignCount">—</strong><span>campaigns</span></div>
+      <div><strong id="homeLiveCount">—</strong><span>live</span></div>
+      <div><strong id="homePageCount">—</strong><span>local pages</span></div>
+      <div><strong id="homeSupporterCount">—</strong><span>responses</span></div>
     </section>
 
-    <section class="rc-home-summary" aria-label="Workspace summary">
-      <div class="rc-home-metric"><strong id="homeCampaignCount">—</strong><span>Total campaigns</span></div>
-      <div class="rc-home-metric live"><strong id="homeLiveCount">—</strong><span>Live now</span></div>
-      <div class="rc-home-metric"><strong id="homePageCount">—</strong><span>Local pages</span></div>
-      <div class="rc-home-metric"><strong id="homeSupporterCount">—</strong><span>Responses captured</span></div>
+    <section class="rc-nb-section" id="campaigns">
+      <div class="rc-nb-section-head"><div><h2>Campaigns</h2><p>Campaigns currently in this workspace.</p></div><div class="rc-nb-tools"><label>Status <select id="centralCampaignStatusFilter"><option value="">All</option><option value="live">Live</option><option value="draft">Draft</option><option value="paused">Paused</option><option value="archived">Archived</option></select></label><a href="campaign-wizard.html">New campaign</a></div></div>
+      <div class="ops-campaign-list" id="centralCampaignsList"><div class="ops-loading">Loading campaigns…</div></div>
     </section>
 
-    <div class="rc-home-grid">
-      <section class="rc-home-panel" id="campaigns">
-        <div class="rc-home-panel-head"><div><h2>Your campaigns</h2><p>Open a campaign to manage pages, advertising and results.</p></div><label class="rc-filter-v5"><span>Status</span><select id="centralCampaignStatusFilter"><option value="">All statuses</option><option value="active">Active</option><option value="draft">Draft</option><option value="paused">Paused</option><option value="ended">Ended</option><option value="archived">Archived</option></select></label></div>
-        <div class="ops-campaign-list" id="centralCampaignsList"><div class="ops-loading">Loading campaigns…</div></div>
-      </section>
-
-      <aside id="create">
-        <section class="rc-quickstart">
-          <div class="rc-quickstart-head"><small>Quick start</small><h2>What are you launching?</h2></div>
-          <div class="rc-quickstart-list">
-            <a class="rc-quickstart-link" href="campaign-wizard.html"><span class="rc-quickstart-icon">▤</span><span class="rc-quickstart-copy"><strong>Campaign + website</strong><small>Local pages, forms, creative and ads</small></span><span class="rc-quickstart-arrow">→</span></a>
-            <a class="rc-quickstart-link" href="ads-wizard.html"><span class="rc-quickstart-icon">◎</span><span class="rc-quickstart-copy"><strong>Ads only</strong><small>Build local paid media around an existing site</small></span><span class="rc-quickstart-arrow">→</span></a>
-            <a class="rc-quickstart-link" href="landing-wizard.html"><span class="rc-quickstart-icon">□</span><span class="rc-quickstart-copy"><strong>Landing page</strong><small>A focused page and response form</small></span><span class="rc-quickstart-arrow">→</span></a>
-          </div>
-        </section>
-        <div class="rc-home-note"><strong>Rapid Campaign</strong> keeps geography connected from landing page to creative, advertising, responses and results.</div>
-      </aside>
-    </div>
+    <section class="rc-nb-section" id="activity">
+      <div class="rc-nb-section-head"><div><h2>Recent activity</h2><p>What has changed across your campaigns.</p></div></div>
+      <div id="rapidActivityFeed" class="rc-activity-feed"><div class="rc-activity-empty">Loading activity…</div></div>
+    </section>
   </div>
 </main></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4"></script><script src="assets/js/supabase-config.js?v=20260901-auth3"></script><script>window.CP_ADMIN_ACTIVE="central_campaigns";</script><script src="assets/js/admin-shared-stage3c.js?v=20260901-readyfix1"></script><script src="assets/js/admin-runtime.js?v=20260903-stable16"></script><script src="assets/js/admin-home-v22.js?v=20260903-v22"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4"></script><script src="assets/js/supabase-config.js?v=20260901-auth3"></script><script>window.CP_ADMIN_ACTIVE="central_campaigns";</script><script src="assets/js/admin-shared-stage3c.js?v=20260901-readyfix1"></script><script src="assets/js/admin-runtime.js?v=20260903-stable16"></script><script src="assets/js/admin-home-v8.js?v=20260911-v8"></script></body></html>
