@@ -1,0 +1,26 @@
+/* Rapid Campaign v11 — campaign hub cards */
+.v18-work{max-width:1380px!important;padding-bottom:72px!important}
+.v18-pagehead{margin-bottom:22px!important}
+.v18-pagehead h1{font-size:40px!important;letter-spacing:-.035em!important}
+.v18-tiles{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;align-items:stretch!important;margin-top:26px!important}
+.v18-tile{min-height:174px!important;padding:28px 30px!important;background:#fff!important;border:1px solid #d6e0eb!important;border-radius:2px!important;box-shadow:none!important;color:#0b2a50!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:space-between!important;gap:26px!important;text-decoration:none!important;position:relative!important;overflow:hidden!important}
+.v18-tile:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#1684e8;opacity:0;transition:.15s ease}
+.v18-tile:hover{border-color:#aabed3!important;background:#fbfdff!important;transform:none!important}
+.v18-tile:hover:before{opacity:1}
+.v18-tile>span:first-child{width:48px!important;height:48px!important;display:grid!important;place-items:center!important;background:#edf6ff!important;border:1px solid #d7eafe!important;color:#1478d4!important;flex:0 0 auto!important}
+.v18-tile svg{width:24px!important;height:24px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.7!important;opacity:1!important}
+.v18-tile>span:last-child{display:block!important;width:100%!important;color:#0b2a50!important}
+.v18-tile strong{display:block!important;font-size:21px!important;line-height:1.2!important;color:#0b2a50!important;margin:0 0 8px!important}
+.v18-tile .rc-hub-desc{display:block;font-size:14px;line-height:1.5;color:#70849c;max-width:520px;font-weight:400}
+.v18-tile .rc-hub-open{position:absolute;right:25px;bottom:25px;color:#1478d4;font-weight:700;font-size:13px}
+.v18-section{margin-top:22px!important;background:#fff!important;border:1px solid #d6e0eb!important;padding:22px 24px!important}
+.v18-state{color:#657c95!important}
+@media(max-width:900px){.v18-tiles{grid-template-columns:1fr!important}.v18-tile{min-height:148px!important}.v18-pagehead h1{font-size:34px!important}}
+/* AI connection card */
+.v7-ai-connection{border:1px solid #d6e0eb;background:#fff;padding:22px;margin-bottom:18px}
+.v7-ai-connection .row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.v7-ai-connection label{display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:700;color:#49637d;flex:1;min-width:220px}
+.v7-ai-connection input,.v7-ai-connection select{height:42px;border:1px solid #c8d5e3;background:#fff;padding:0 12px;color:#173452}
+.v7-ai-connection .status{margin-top:10px;font-size:13px;color:#688098}
+.v7-ai-connection.connected{border-left:4px solid #1d9d62}
+.v7-ai-connection .connection-actions{display:flex;gap:8px;align-items:center}
