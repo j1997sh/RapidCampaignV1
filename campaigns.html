@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Rapid Campaign</title>
-<link href="assets/css/style.css?v=20260901-shell1" rel="stylesheet"/><link href="assets/css/rapid-app-v2.css?v=20260901-1907" rel="stylesheet"/><link href="assets/css/campaign-platform-v16.css?v=20260903-stable16" rel="stylesheet"/><link href="assets/css/campaign-ops-global-v181.css?v=20260903-ops181" rel="stylesheet"/><link href="assets/css/campaign-ops-refine-v19.css?v=20260903-refine19" rel="stylesheet"/><link href="assets/css/campaign-ops-final-v20.css?v=20260903-final20" rel="stylesheet"/><link href="assets/css/campaign-home-v22.css?v=20260903-v22" rel="stylesheet"/><link href="assets/css/rapid-toolkit-theme.css?v=20260911-toolkit-theme" rel="stylesheet"/></head>
-<body class="admin-body rc-home-v21">
-<header class="rc-home-topbar">
-  <a class="rc-home-brand" href="campaigns.html"><span class="rc-home-mark">RC</span><strong>Rapid Campaign</strong></a>
-  <nav><a href="#campaigns">Campaigns</a><a href="#create">New campaign</a><a data-action="logout" href="index.html">Log out</a></nav>
-</header>
-<main class="rc-home-main">
-  <div id="centralCampaignsMessage"></div>
-  <section class="rc-home-section" id="create">
-    <div class="rc-home-section-head"><h1>Create</h1></div>
-    <div class="rc-create-grid">
-      <a class="rc-create-tile" href="campaign-wizard.html"><span class="rc-create-icon">▤</span><strong>Campaign + website</strong><small>Local pages, forms, creative and paid media</small></a>
-      <a class="rc-create-tile" href="ads-wizard.html"><span class="rc-create-icon">◎</span><strong>Ads only</strong><small>Use an existing website and build the paid campaign</small></a>
-      <a class="rc-create-tile" href="landing-wizard.html"><span class="rc-create-icon">□</span><strong>Landing page</strong><small>One campaign page with a form</small></a>
-    </div>
-  </section>
+<link href="assets/css/style.css?v=20260901-shell1" rel="stylesheet"/><link href="assets/css/rapid-app-v2.css?v=20260901-1907" rel="stylesheet"/><link href="assets/css/campaign-platform-v16.css?v=20260903-stable16" rel="stylesheet"/><link href="assets/css/campaign-ops-global-v181.css?v=20260903-ops181" rel="stylesheet"/><link href="assets/css/campaign-ops-refine-v19.css?v=20260903-refine19" rel="stylesheet"/><link href="assets/css/campaign-ops-final-v20.css?v=20260903-final20" rel="stylesheet"/><link href="assets/css/campaign-home-v22.css?v=20260903-v22" rel="stylesheet"/><link href="assets/css/rapid-product-v5.css?v=20260911-v5" rel="stylesheet"/></head>
+<body class="admin-body">
+<div class="rc-product-shell">
+<aside class="rc-product-sidebar">
+  <a class="rc-product-brand" href="campaigns.html"><span class="rc-product-mark">RC</span><span><strong>Rapid Campaign</strong><small>Campaign workspace</small></span></a>
+  <nav class="rc-product-nav"><a class="active" href="campaigns.html">Home</a><a href="#campaigns">Campaigns</a><a href="#create">Create campaign</a></nav>
+  <div class="rc-product-sidebar-bottom"><a data-action="logout" href="index.html">Log out</a></div>
+</aside>
+<main class="rc-product-main">
+  <header class="rc-product-topbar"><span class="crumb">Workspace</span><div class="top-actions"><a href="#campaigns">Campaigns</a><a href="#create">New campaign</a></div></header>
+  <div class="rc-product-content wide">
+    <div id="centralCampaignsMessage"></div>
+    <div class="rc-page-title"><div><div class="rc-eyebrow">Rapid Campaign</div><h1>Campaigns</h1><p>Build once, localise everywhere and keep every page, response and ad connected.</p></div></div>
 
-  <section class="rc-home-section rc-stats-section" aria-label="Workspace summary">
-    <div class="rc-stat-grid">
-      <div class="rc-stat"><strong id="homeCampaignCount">—</strong><span>Campaigns</span></div>
-      <div class="rc-stat"><strong id="homeLiveCount">—</strong><span>Live</span></div>
-      <div class="rc-stat"><strong id="homePageCount">—</strong><span>Local pages</span></div>
-      <div class="rc-stat"><strong id="homeSupporterCount">—</strong><span>Responses</span></div>
-    </div>
-  </section>
+    <section class="rc-create-panel" id="create">
+      <div class="rc-panel-head"><div><h2>Start something new</h2><p>Choose the workflow that fits this campaign.</p></div></div>
+      <div class="rc-create-grid-v5">
+        <a class="rc-create-card primary" href="campaign-wizard.html"><span class="arrow">→</span><span class="icon">▤</span><strong>Campaign + website</strong><small>Generate local campaign pages, forms, creative and paid media from one master campaign.</small></a>
+        <a class="rc-create-card" href="ads-wizard.html"><span class="arrow">→</span><span class="icon">◎</span><strong>Ads only</strong><small>Use an existing website and build a localised paid advertising structure around it.</small></a>
+        <a class="rc-create-card" href="landing-wizard.html"><span class="arrow">→</span><span class="icon">□</span><strong>Landing page</strong><small>Launch a focused campaign page and response form without a full local rollout.</small></a>
+      </div>
+    </section>
 
-  <section class="rc-home-section" id="campaigns">
-    <div class="rc-campaigns-head">
-      <h2>Campaigns</h2>
-      <label class="rc-filter"><span>Status</span><select id="centralCampaignStatusFilter"><option value="">All statuses</option><option value="active">Active</option><option value="draft">Draft</option><option value="paused">Paused</option><option value="ended">Ended</option><option value="archived">Archived</option></select></label>
-    </div>
-    <div class="ops-campaign-list" id="centralCampaignsList"><div class="ops-loading">Loading campaigns…</div></div>
-  </section>
-</main>
+    <section class="rc-stat-grid-v5" aria-label="Workspace summary">
+      <div class="rc-stat-v5"><strong id="homeCampaignCount">—</strong><span>Campaigns</span></div>
+      <div class="rc-stat-v5"><strong id="homeLiveCount">—</strong><span>Live campaigns</span></div>
+      <div class="rc-stat-v5"><strong id="homePageCount">—</strong><span>Local pages</span></div>
+      <div class="rc-stat-v5"><strong id="homeSupporterCount">—</strong><span>Responses</span></div>
+    </section>
+
+    <section class="rc-campaign-panel" id="campaigns">
+      <div class="rc-campaign-panel-head"><h2>Your campaigns</h2><label class="rc-filter-v5"><span>Status</span><select id="centralCampaignStatusFilter"><option value="">All statuses</option><option value="active">Active</option><option value="draft">Draft</option><option value="paused">Paused</option><option value="ended">Ended</option><option value="archived">Archived</option></select></label></div>
+      <div class="ops-campaign-list" id="centralCampaignsList"><div class="ops-loading">Loading campaigns…</div></div>
+    </section>
+  </div>
+</main></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4"></script><script src="assets/js/supabase-config.js?v=20260901-auth3"></script><script>window.CP_ADMIN_ACTIVE="central_campaigns";</script><script src="assets/js/admin-shared-stage3c.js?v=20260901-readyfix1"></script><script src="assets/js/admin-runtime.js?v=20260903-stable16"></script><script src="assets/js/admin-home-v22.js?v=20260903-v22"></script></body></html>
