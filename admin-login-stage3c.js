@@ -13,8 +13,8 @@ setup.onclick=async()=>{
  if(!email||!password){msg.innerHTML='<div class="state-banner error">Enter your email and password first.</div>';return}
  setup.disabled=true;setup.textContent='Setting up…';
  const r=await sb.auth.signUp({email,password});
- if(r.error){msg.innerHTML=`<div class="state-banner error">${esc(r.error.message)}</div>`;setup.disabled=false;setup.textContent='First time? Set up my account';return}
+ if(r.error){msg.innerHTML=`<div class="state-banner error">${esc(r.error.message)}</div>`;setup.disabled=false;setup.textContent='Create my account';return}
  if(r.data.session&&r.data.user){await enter(r.data.user)}else{msg.innerHTML='<div class="state-banner success">Account created. Check your email to confirm it, then return here and log in with the same password.</div>'}
- setup.disabled=false;setup.textContent='First time? Set up my account';
+ setup.disabled=false;setup.textContent='Create my account';
 };
 })();
