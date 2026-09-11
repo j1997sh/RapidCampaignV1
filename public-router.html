@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rapid Campaign</title></head><body><p>Opening campaign…</p><script>
+(function(){
+ const q=new URLSearchParams(location.search);let slug=q.get('site')||'';
+ if(!slug){const p=location.pathname.split('/').filter(Boolean),i=p.lastIndexOf('site');slug=i>=0?p[i+1]:'';}
+ if(!slug){location.replace('campaigns.html');return;}q.set('site',slug);location.replace('public-site.html?'+q.toString());
+})();
+</script></body></html>
