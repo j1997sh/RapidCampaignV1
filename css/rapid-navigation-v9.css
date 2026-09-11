@@ -1,0 +1,62 @@
+/* Rapid Campaign V9 — one navigation system everywhere */
+:root{--rc-side:#071f3b;--rc-side-hover:#112f50;--rc-side-active:#173f6b;--rc-side-line:#27435f;--rc-side-text:#d6e1ec;--rc-side-muted:#8fa4b9;--rc-side-accent:#2a98eb}
+
+/* Make every admin shell use exactly the same rail */
+.admin-shell,.v18-shell,.rc-product-shell{grid-template-columns:205px minmax(0,1fr)!important}
+.admin-sidebar,.v18-sidebar,.rc-product-sidebar,.rc-unified-sidebar{
+ width:205px!important;min-width:205px!important;height:100vh!important;position:sticky!important;top:0!important;
+ background:var(--rc-side)!important;color:#fff!important;border:0!important;padding:0!important;
+ display:flex!important;flex-direction:column!important;overflow-y:auto!important;z-index:50!important
+}
+.admin-main,.v18-main,.rc-product-main{min-width:0!important;margin:0!important}
+
+.rc-unified-brand{height:74px;display:flex;align-items:center;gap:10px;padding:0 18px;color:#fff!important;text-decoration:none!important;border-bottom:1px solid rgba(255,255,255,.04)}
+.rc-unified-brand span{width:34px;height:34px;background:#1983dc;display:grid;place-items:center;font-size:12px;font-weight:900;letter-spacing:-.02em}
+.rc-unified-brand b{font-size:15px;line-height:1.08;letter-spacing:-.015em;max-width:118px}
+.rc-unified-nav{padding:13px 0;display:block!important;flex:0 0 auto}
+.rc-unified-nav>a,.rc-nav-parent>a,.rc-nav-campaign-group>a{
+ position:relative;display:flex!important;align-items:center!important;gap:10px!important;min-height:39px!important;
+ margin:0!important;padding:0 16px 0 18px!important;border:0!important;border-left:3px solid transparent!important;border-radius:0!important;
+ background:transparent!important;color:var(--rc-side-text)!important;text-decoration:none!important;font-size:12px!important;font-weight:700!important;line-height:1.1!important
+}
+.rc-unified-nav>a i,.rc-nav-parent>a i{width:18px;text-align:center;color:#b7c6d5;font-style:normal;font-size:15px;font-weight:500}
+.rc-unified-nav>a:hover,.rc-nav-parent>a:hover,.rc-nav-campaign-group>a:hover{background:var(--rc-side-hover)!important;color:#fff!important}
+.rc-unified-nav>a.active,.rc-nav-parent>a.active-parent{background:var(--rc-side-active)!important;border-left-color:var(--rc-side-accent)!important;color:#fff!important}
+.rc-nav-parent>a em{margin-left:auto;font-size:15px;font-style:normal;color:#95aac0;font-weight:500}
+.rc-nav-parent.open>a{border-bottom:1px solid rgba(255,255,255,.035)!important}
+
+/* Campaigns behave like NationBuilder's nested Website list */
+.rc-nav-campaign-group{padding:7px 0 9px;background:rgba(255,255,255,.055);border-bottom:1px solid rgba(255,255,255,.055)}
+.rc-nav-campaign-label{padding:7px 16px 8px 36px}
+.rc-nav-campaign-label span{display:block;color:#8198af;font-size:8px;letter-spacing:.13em;font-weight:900;margin-bottom:4px}
+.rc-nav-campaign-label strong{display:block;color:#fff;font-size:12px;font-weight:800;line-height:1.28;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rc-nav-campaign-group>a{min-height:34px!important;padding-left:36px!important;font-size:11.5px!important;color:#c1cedb!important}
+.rc-nav-campaign-group>a.rc-nav-child{padding-left:49px!important;color:#93a8bc!important;font-size:11px!important}
+.rc-nav-campaign-group>a.active{background:#18466f!important;color:#fff!important;border-left-color:#36a2ef!important;font-weight:900!important}
+.rc-nav-campaign-group>a.rc-nav-child.active{background:#143b61!important}
+.rc-unified-rule{height:1px;background:var(--rc-side-line);margin:10px 0}
+.rc-unified-sidebar-bottom{margin-top:auto;border-top:1px solid var(--rc-side-line);padding:11px 0 14px}
+.rc-unified-sidebar-bottom a{display:block;padding:9px 21px;color:#c5d2df!important;font-size:11.5px;font-weight:700;text-decoration:none!important}
+.rc-unified-sidebar-bottom a:hover{color:#fff!important}
+
+/* Remove all legacy sidebar chrome so no page can drift */
+.rc-unified-sidebar .admin-brand,.rc-unified-sidebar .admin-org-chip,.rc-unified-sidebar .admin-nav,.rc-unified-sidebar .admin-sidebar-bottom,
+.rc-unified-sidebar .v18-brand,.rc-unified-sidebar .v18-context,.rc-unified-sidebar .v18-nav,
+.rc-unified-sidebar .rc-product-brand,.rc-unified-sidebar .rc-product-nav,.rc-unified-sidebar .rc-product-sidebar-bottom{display:none!important}
+
+/* Legacy top bars should align to the same density too */
+.admin-topbar,.v18-topbar,.rc-product-topbar{min-height:64px!important;height:64px!important;background:#fff!important;border-bottom:1px solid #dbe4ee!important;padding:0 24px!important;box-shadow:none!important}
+.admin-topbar h1{font-size:17px!important;letter-spacing:-.02em!important;margin:0!important}
+.admin-topbar small{font-size:10px!important;color:#7a8999!important}
+.v23-top-brand{display:none!important}
+
+/* Campaign pages already have top tabs; sidebar is now the primary hierarchy so keep them quiet */
+.v23-campaign-nav{background:#fff!important;border:1px solid #dbe4ee!important;border-width:1px 0!important;padding:0!important;margin:0 0 22px!important;gap:0!important}
+.v23-campaign-nav a{padding:11px 14px!important;font-size:11px!important;border-bottom:2px solid transparent!important}
+.v23-campaign-nav a.active{border-bottom-color:#1476d4!important}
+
+@media(max-width:900px){
+ .admin-shell,.v18-shell,.rc-product-shell{grid-template-columns:1fr!important}
+ .admin-sidebar,.v18-sidebar,.rc-product-sidebar,.rc-unified-sidebar{position:relative!important;width:100%!important;min-width:0!important;height:auto!important;max-height:none!important}
+ .rc-unified-brand{height:60px}.rc-unified-nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:8px!important}.rc-unified-nav>a,.rc-nav-parent>a{margin:0!important}.rc-nav-parent{display:block}.rc-nav-campaign-group{grid-column:1/-1}.rc-unified-sidebar-bottom{display:none!important}
+}
