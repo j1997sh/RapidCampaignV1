@@ -1,0 +1,6 @@
+Add these two includes to the shared shell / each page using the sidebar:
+
+<link rel="stylesheet" href="assets/css/campaigns-sidebar.css">
+<script src="assets/js/campaigns-sidebar.js"></script>
+
+This turns Campaigns into an expandable parent and loads the user's campaigns underneath.

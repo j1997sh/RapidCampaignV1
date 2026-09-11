@@ -1,0 +1,15 @@
+
+.rc-campaigns-group{display:block}
+.rc-campaigns-parent{display:flex!important;align-items:center;justify-content:space-between;gap:10px}
+.rc-campaigns-chevron{font-size:16px;line-height:1;opacity:.7;transition:transform .15s ease}
+.rc-campaigns-group.open .rc-campaigns-chevron{transform:rotate(180deg)}
+.rc-campaigns-subnav{display:none;padding:4px 0 8px}
+.rc-campaigns-group.open .rc-campaigns-subnav{display:block}
+.rc-campaigns-subnav a{margin:0!important;padding:9px 12px 9px 42px!important;font-size:14px!important;font-weight:600!important;display:flex!important;align-items:center;gap:8px;background:transparent!important;color:#c7d5e4!important;border-left:0!important}
+.rc-campaigns-subnav a:hover{background:rgba(255,255,255,.06)!important;color:#fff!important}
+.rc-campaigns-subnav a.active{background:rgba(28,132,223,.18)!important;color:#fff!important}
+.rc-campaign-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc-campaign-dot{width:7px;height:7px;border-radius:50%;background:#6f8295;flex:0 0 7px}
+.rc-campaign-dot.live{background:#35b66a}
+.rc-campaign-all{color:#7fbdf1!important;font-size:13px!important}
+.rc-campaigns-loading{padding:8px 12px 8px 42px;color:#7990a6;font-size:12px}
